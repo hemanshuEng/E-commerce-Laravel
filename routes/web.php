@@ -16,3 +16,6 @@
 Route::get('/', function () {
     return view('pages.home');
 });
+Route::get('/shop', function () {
+    return view('pages.men');
+});
