@@ -1,11 +1,11 @@
 <div class="container">
     <div class="row text-info">
-        <div class="col-2 col-md-3">
+        <div class="col-6 col-md-3">
             <h5 class="text-uppercase">About Footwear</h5>
             <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life
             </p>
         </div>
-        <div class="col-2 col-md-3 text-uppercase ">
+        <div class="col-6 col-md-3 text-uppercase ">
             <h5>Customer care</h5>
             <p><a href="#"  class="text-info">Contant</a></p>
             <p><a href="#" class="text-info">Return</a></p>
@@ -16,12 +16,12 @@
                <i class="fab fa-youtube-square fa-2x  "></i>
             </p>
         </div>
-        <div class="col-2 col-md-3">
+        <div class="col-6 col-md-3">
                 <h5 class="text-uppercase">Information</h5>
                 <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life
                 </p>
         </div>
-        <div class="col-2 col-md-3">
+        <div class="col-6 col-md-3">
                 <h5 class="text-uppercase">Contact</h5>
                 <p>291,wall street</p>
                 <p>+122-1212-121</p>
