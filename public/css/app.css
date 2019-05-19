@@ -10713,6 +10713,12 @@ body {
      object-fit: cover;
 }
 
+.carousel-indicators li {
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+}
+
 /*!
  * Font Awesome Free 5.8.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)

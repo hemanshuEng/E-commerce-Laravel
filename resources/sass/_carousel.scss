@@ -4,3 +4,10 @@
         object-fit: cover;
     }
 }
+.carousel-indicators{
+    li{
+        border-radius: 50%;
+        height: 15px;
+        width: 15px;
+    }
+}
