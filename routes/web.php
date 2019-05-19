@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('/shop', function () {
     return view('pages.men');
 });
+
+Route::get('/detail', function () {
+    return view('pages.detail');
+});
