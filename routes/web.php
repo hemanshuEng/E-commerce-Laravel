@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ShopController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +17,8 @@ Route::get('/', 'BestSellerController@index');
 
 // Route::view('/', 'pages.home');
 
-Route::get('/shop', function () {
-    return view('pages.men');
-});
-
-Route::get('/detail', function () {
-    return view('pages.detail');
-});
+// Route::get('/shop', function () {
+//     return view('pages.men');
+// });
+Route::get('/shop', 'ShopController@index')->name('shop.index');
+Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
