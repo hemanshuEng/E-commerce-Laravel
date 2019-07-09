@@ -73,8 +73,14 @@
                                         <td class="border-0 align-middle"><strong>£ {{$item->model->price}}</strong>
                                         </td>
                                         <td class="border-0 align-middle"><strong>3</strong></td>
-                                        <td class="border-0 align-middle"><a href="#" class="text-dark"><i
-                                                    class="fa fa-trash"></i></a></td>
+                                        <td class="border-0 align-middle">
+                                            <form action="{{route('cart.destroy',$item->rowId)}}" method="POST">
+                                                {{csrf_field()}}
+                                                {{method_field('DELETE')}}
+                                                <button type="submit" class="text-dark border-0"><i
+                                                        class="fa fa-trash"></i></button>
+                                            </form>
+                                        </td>
                                     </tr>
                                     @endforeach
                                 </tbody>
@@ -114,14 +120,13 @@
                                 have entered.</p>
                             <ul class="list-unstyled mb-4">
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong
-                                        class="text-muted">Order Subtotal </strong><strong>$390.00</strong></li>
+                                        class="text-muted">Order Subtotal </strong><strong>£ {{Cart::subtotal()}}</strong>
+                                </li>
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong
-                                        class="text-muted">Shipping and handling</strong><strong>$10.00</strong></li>
-                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
-                                        class="text-muted">Tax</strong><strong>$0.00</strong></li>
+                                        class="text-muted">Tax</strong><strong>£ {{Cart::tax()}}</strong></li>
                                 <li class="d-flex justify-content-between py-3 border-bottom"><strong
                                         class="text-muted">Total</strong>
-                                    <h5 class="font-weight-bold">$400.00</h5>
+                                    <h5 class="font-weight-bold">£ {{Cart::total()}}</h5>
                                 </li>
                             </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
                         </div>
@@ -130,6 +135,9 @@
                     @else
 
                     <h2> No item in Shopping Cart</h2>
+                    <div class="col">
+                        <a href="{{route('shop.index')}}" class="btn btn-info">Continue Shopping</a>
+                    </div>
                     @endif
                 </div>
             </div>
