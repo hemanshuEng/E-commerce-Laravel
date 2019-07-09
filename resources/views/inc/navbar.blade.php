@@ -22,10 +22,10 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{route('home')}}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/shop">MEN</a>
+                    <a class="nav-link" href="{{route('shop.index')}}">MEN</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Women</a>
@@ -39,7 +39,8 @@
             </ul>
         </div>
         <div class="cart-menu">
-            <i class="fas fa-cart-arrow-down fa-1x  "> Cart <span>[0]</span> </i>
+            <a href="{{route('cart.index')}}"><i class="fas fa-cart-arrow-down fa-1x  "> Cart
+                    <span>[{{Cart::count()}}]</span> </i></a>
         </div>
     </nav>
 

@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\ShopController;
+
+use Gloudemans\Shoppingcart\Facades\Cart;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,7 +14,7 @@ use App\Http\Controllers\ShopController;
 |
 */
 
-Route::get('/', 'BestSellerController@index');
+Route::get('/', 'BestSellerController@index')->name('home');
 
 // Route::view('/', 'pages.home');
 
@@ -22,7 +23,10 @@ Route::get('/', 'BestSellerController@index');
 // });
 Route::get('/shop', 'ShopController@index')->name('shop.index');
 Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
+Route::get('/cart', 'CartController@index')->name('cart.index');
+Route::post('/cart', 'CartController@store')->name('cart.store');
+Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
 
-Route::get('/cart', function () {
-    return view('pages.cart');
+Route::get('empty', function () {
+    Cart::destroy();
 });

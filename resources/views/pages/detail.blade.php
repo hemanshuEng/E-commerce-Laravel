@@ -11,7 +11,15 @@
             <div class="h4">{{$product->details}}</div>
             <h4 class="font-weigth-bold">£ {{$product->price}}</h4>
             <p>{{$product->description}}</p>
-            <a href="#" class="btn btn-info rounded"><i class="fas fa-cart-arrow-down"> ADD TO CART</i></a>
+            {{-- <a href="#" class="btn btn-info rounded"><i class="fas fa-cart-arrow-down"> ADD TO CART</i></a> --}}
+            <form action="{{route('cart.store')}}" method="POST">
+                {{ csrf_field() }}
+                <input type="hidden" name="id" value={{$product->id}}>
+                <input type="hidden" name="name" value={{$product->name}}>
+                <input type="hidden" name="price" value={{$product->price}}>
+                <button type="submit" class="btn btn-info rounded"><i class="fas fa-cart-arrow-down"> ADD TO
+                        CART</i></button>
+            </form>
         </div>
     </div>
 </div>
