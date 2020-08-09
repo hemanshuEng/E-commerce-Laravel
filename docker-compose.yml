@@ -6,6 +6,7 @@ services:
       context: ./docker/php
     volumes:
       - ./docker/php/php.ini:/usr/local/etc/php/php.ini
+      - ./docker/php/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - ./:/var/www
 
   nginx:
@@ -21,6 +22,8 @@ services:
       - php-fpm
     ports:
       - "80:80"
+      - "3000:3000"
+      - "3001:3001"
 
   db:
     image: mysql:5.7

@@ -14,8 +14,31 @@ const mix = require("laravel-mix");
 mix.js("resources/js/app.js", "public/js").sass(
     "resources/sass/app.scss",
     "public/css"
-);
+).version();
 mix.browserSync({
-    proxy: 'footwear.test'
- });
- mix.disableNotifications();
+    proxy:'nginx',
+    open:false,
+    files: [
+        './resources/views/**/*.blade.php'
+    ],
+    reload: false
+});
+mix.options({
+    hmrOptions: {
+        host: 'localhost',
+        port: '3000'
+    },
+});
+
+mix.webpackConfig({
+    mode: "development",
+    devtool: "inline-source-map",
+    devServer: {
+        disableHostCheck: true,
+        headers: {
+            'Access-Control-Allow-Origin': '*'
+        },
+        host: "localhost",
+        port: 3000
+    },
+});

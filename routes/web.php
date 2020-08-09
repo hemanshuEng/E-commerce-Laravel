@@ -2,6 +2,7 @@
 
 
 use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Support\Facades\Config;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,12 +16,6 @@ use Gloudemans\Shoppingcart\Facades\Cart;
 */
 
 Route::get('/', 'BestSellerController@index')->name('home');
-
-// Route::view('/', 'pages.home');
-
-// Route::get('/shop', function () {
-//     return view('pages.men');
-// });
 Route::get('/shop', 'ShopController@index')->name('shop.index');
 Route::get('/shop/{product}', 'ShopController@show')->name('shop.show');
 Route::get('/cart', 'CartController@index')->name('cart.index');
@@ -30,3 +25,5 @@ Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy')
 Route::get('empty', function () {
     Cart::destroy();
 });
+
+$value = Config::get('app.timezone');
