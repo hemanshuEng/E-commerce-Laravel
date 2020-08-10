@@ -37,9 +37,10 @@ RUN apt-get install -y nodejs
 
 WORKDIR /var/www/
 
-RUN composer install
-RUN npm install
-RUN npm run prod
+#Only use in producation
+#RUN composer install
+#RUN npm install
+#RUN npm run prod
 
 RUN addgroup --gid $GROUP_ID user
 RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID user
