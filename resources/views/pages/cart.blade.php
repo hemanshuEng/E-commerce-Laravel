@@ -72,7 +72,7 @@
                                         </th>
                                         <td class="border-0 align-middle"><strong>£ {{$item->model->price}}</strong>
                                         </td>
-                                        <td class="border-0 align-middle"><strong>3</strong></td>
+                                        <td class="border-0 align-middle"><strong>{{$item->qty}}</strong></td>
                                         <td class="border-0 align-middle">
                                             <form action="{{route('cart.destroy',$item->rowId)}}" method="POST">
                                                 {{csrf_field()}}
