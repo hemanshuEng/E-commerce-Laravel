@@ -2,7 +2,7 @@
 @section('content')
     <div class="container py-5">
         <div class="row  justify-content-around py-5 px-1 bg-white rounded shadow-sm mb-5">
-            <div class="col-md-7 bg-light rounded mb-5 p-5">
+            <div class="col-md-7 bg-light rounded mb-5 p-5 align-self-start ">
                 <h2>Billing Details</h2>
                 <div class="row justify-content-around">
                     <div class="col-md-6">
@@ -59,12 +59,58 @@
                 <h2>Cart Total</h2>
                 <div class="row">
                     <div class="col-md-12">
-                        <ul>
-                            <li>
-                                <span>product</span>
-                                <span>price</span>
-                            </li>
-                        </ul>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="text-uppercase">Product</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light text-center">
+                                        <div class="text-uppercase">Price</div>
+                                    </th>
+
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (Cart::content() as $item)
+                                    <tr>
+                                        <th scope="row" class="border-0">
+                                                <div class="ml-1 d-inline-block align-middle">
+                                                    <span>{{$item->qty}} X </span>
+                                                    <p class="mb-0"> <a
+                                                            href="{{route('shop.show',$item->model->slug)}}"
+                                                            class="text-dark align-middle">{{$item->model->name}}</a>
+                                                    </p>
+                                                </div>
+                                        </th>
+                                        <td class="border-0 align-middle text-center"><strong>£ {{$item->model->price}}</strong>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Order summary
+                        </div>
+                        <div class="p-4">
+                            <p class="font-italic mb-4">Shipping and additional costs are calculated based on values you
+                                have entered.</p>
+                            <ul class="list-unstyled mb-4">
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Order Subtotal </strong><strong>£ {{Cart::subtotal()}}</strong>
+                                </li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Tax</strong><strong>£ {{Cart::tax()}}</strong></li>
+                                <li class="d-flex justify-content-between py-3 border-bottom"><strong
+                                        class="text-muted">Total</strong>
+                                    <h5 class="font-weight-bold">£ {{Cart::total()}}</h5>
+                                </li>
+                            </ul><a href="{{route('checkout.index')}}" class="btn btn-dark rounded-pill py-2 btn-block">Place Order</a>
+                        </div>
+
                     </div>
                 </div>
             </div>
