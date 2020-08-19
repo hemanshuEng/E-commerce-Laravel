@@ -149,7 +149,7 @@
                 <div class="row p-5 bg-white rounded shadow-sm mb-5">
                     <div class="col-lg-12">
                         @if (Cart::instance('addToWishList')->count()>0)
-                        <h2 class="mb-3 px-3"> {{Cart::count()}} items in WishList</h2>
+                        <h2 class="mb-3 px-3"> {{Cart::instance('addToWishList')->count()}} items in WishList</h2>
                         <!-- Shopping cart table -->
                         <div class="table-responsive">
                             <table class="table">
@@ -187,7 +187,7 @@
                                                         {{$item->model->details}}
                                                     </span>
                                                     <span class="d-block ">
-                                                        <form action="{{route('cart.addToWishList',$item->rowId)}}" method="POST">
+                                                        <form action="{{route('wishlist.addToCart',$item->rowId)}}" method="POST">
                                                             {{csrf_field()}}
                                                             <button type="submit" class="text-dark border-0 "><i
                                                                     class="fa fa-shopping-cart"> Move to Cart</i></button>
@@ -200,7 +200,7 @@
                                         </td>
                                         <td class="border-0 align-middle text-center"><strong>{{$item->qty}}</strong></td>
                                         <td class="border-0 align-middle text-center">
-                                            <form action="{{route('cart.destroy',$item->rowId)}}" method="POST">
+                                            <form action="{{route('wishlist.destroy',$item->rowId)}}" method="POST">
                                                 {{csrf_field()}}
                                                 {{method_field('DELETE')}}
                                                 <button type="submit" class="text-dark border-0 "><i
@@ -214,7 +214,7 @@
                         </div>
                         <!-- End -->
                     </div>
-                    @endif
+                    @else <h2> No item in WishList</h2> @endif
                 </div>
             </div>
         </div>

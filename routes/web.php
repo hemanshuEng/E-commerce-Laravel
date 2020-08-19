@@ -25,8 +25,11 @@ Route::post('/cart', 'CartController@store')->name('cart.store');
 Route::delete('/cart/{product}', 'CartController@destroy')->name('cart.destroy');
 Route::post('/cart/addToWishList/{product}', 'CartController@addToWishList')->name('cart.addToWishList');
 
+Route::delete('/WishList/{product}', 'WishListController@destroy')->name('wishlist.destroy');
+Route::post('/WishList/addToCart/{product}', 'WishListController@addToCart')->name('wishlist.addToCart');
+
 Route::get('empty', function () {
-    Cart::destroy();
+    Cart::instance('addToWishList')->destroy();
 });
 
 $value = Config::get('app.timezone');
