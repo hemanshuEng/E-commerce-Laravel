@@ -134,7 +134,7 @@
                                         class="text-muted">Total</strong>
                                     <h5 class="font-weight-bold">£ {{Cart::total()}}</h5>
                                 </li>
-                            </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
+                            </ul><a href="{{route('checkout.index')}}" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
                         </div>
 
                     </div>
