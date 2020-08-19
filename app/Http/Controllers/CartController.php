@@ -93,4 +93,20 @@ class CartController extends Controller
         Cart::remove($id);
         return back()->with('success', 'Item has been Removed');
     }
+    /**
+     * Add to Wish list later
+     *
+     * @param  int  $id
+     * @return RedirectResponse
+     */
+    public function addToWishList($id)
+    {
+        $item = Cart::get($id);
+
+        Cart::remove($id);
+
+        Cart::instance('addToWishList')->add($item->id,$item->name, 1 , $item->price)->associate('App\Product');
+
+        return redirect()->route('cart.index')->with('success', 'Item was added to Wishlist');
+    }
 }

@@ -41,13 +41,13 @@
                                         <th scope="col" class="border-0 bg-light">
                                             <div class="p-2 px-3 text-uppercase">Product</div>
                                         </th>
-                                        <th scope="col" class="border-0 bg-light">
+                                        <th scope="col" class="border-0 bg-light text-center">
                                             <div class="py-2 text-uppercase">Price</div>
                                         </th>
-                                        <th scope="col" class="border-0 bg-light">
+                                        <th scope="col" class="border-0 bg-light text-center">
                                             <div class="py-2 text-uppercase">Quantity</div>
                                         </th>
-                                        <th scope="col" class="border-0 bg-light">
+                                        <th scope="col" class="border-0 bg-light text-center">
                                             <div class="py-2 text-uppercase">Remove</div>
                                         </th>
                                     </tr>
@@ -65,19 +65,28 @@
                                                     <h5 class="mb-0"> <a
                                                             href="{{route('shop.show',$item->model->slug)}}"
                                                             class="text-dark d-inline-block align-middle">{{$item->model->name}}</a>
-                                                    </h5><span
-                                                        class="text-muted font-weight-normal font-italic d-block">{{$item->model->details}}</span>
+                                                    </h5>
+                                                    <span class="text-muted font-weight-normal font-italic d-block">
+                                                        {{$item->model->details}}
+                                                    </span>
+                                                    <span class="d-block ">
+                                                        <form action="{{route('cart.addToWishList',$item->rowId)}}" method="POST">
+                                                            {{csrf_field()}}
+                                                            <button type="submit" class="text-dark border-0 "><i
+                                                        class="fa fa-heart"> Add to Wishlist</i></button>
+                                                        </form>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </th>
-                                        <td class="border-0 align-middle"><strong>£ {{$item->model->price}}</strong>
+                                        <td class="border-0 align-middle text-center"><strong>£ {{$item->model->price}}</strong>
                                         </td>
-                                        <td class="border-0 align-middle"><strong>{{$item->qty}}</strong></td>
-                                        <td class="border-0 align-middle">
+                                        <td class="border-0 align-middle text-center"><strong>{{$item->qty}}</strong></td>
+                                        <td class="border-0 align-middle text-center">
                                             <form action="{{route('cart.destroy',$item->rowId)}}" method="POST">
                                                 {{csrf_field()}}
                                                 {{method_field('DELETE')}}
-                                                <button type="submit" class="text-dark border-0"><i
+                                                <button type="submit" class="text-dark border-0 "><i
                                                         class="fa fa-trash"></i></button>
                                             </form>
                                         </td>
@@ -88,9 +97,6 @@
                         </div>
                         <!-- End -->
                     </div>
-
-
-                    {{-- <div class="row py-5 p-4 bg-white rounded shadow-sm"> --}}
                     <div class="col-lg-6">
                         <div class="bg-light rounded-pill px-4 py-3 text-uppercase font-weight-bold">Coupon code</div>
                         <div class="p-4">
@@ -130,13 +136,83 @@
                                 </li>
                             </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Procceed to checkout</a>
                         </div>
+
                     </div>
-                    {{-- </div> --}}
                     @else
 
                     <h2> No item in Shopping Cart</h2>
                     <div class="col">
                         <a href="{{route('shop.index')}}" class="btn btn-info">Continue Shopping</a>
+                    </div>
+                    @endif
+                </div>
+                <div class="row p-5 bg-white rounded shadow-sm mb-5">
+                    <div class="col-lg-12">
+                        @if (Cart::instance('addToWishList')->count()>0)
+                        <h2 class="mb-3 px-3"> {{Cart::count()}} items in WishList</h2>
+                        <!-- Shopping cart table -->
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr>
+                                    <th scope="col" class="border-0 bg-light">
+                                        <div class="p-2 px-3 text-uppercase">Product</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light text-center">
+                                        <div class="py-2 text-uppercase">Price</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light text-center">
+                                        <div class="py-2 text-uppercase">Quantity</div>
+                                    </th>
+                                    <th scope="col" class="border-0 bg-light text-center">
+                                        <div class="py-2 text-uppercase">Remove</div>
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (Cart::instance('addToWishList')->content() as $item)
+
+
+                                    <tr>
+                                        <th scope="row" class="border-0">
+                                            <div class="p-2">
+                                                <img src="{{asset('img/'.$item->model->slug.'.jpg')}}" alt="item"
+                                                     width="70" class="img-fluid rounded shadow-sm">
+                                                <div class="ml-3 d-inline-block align-middle">
+                                                    <h5 class="mb-0"> <a
+                                                            href="{{route('shop.show',$item->model->slug)}}"
+                                                            class="text-dark d-inline-block align-middle">{{$item->model->name}}</a>
+                                                    </h5>
+                                                    <span class="text-muted font-weight-normal font-italic d-block">
+                                                        {{$item->model->details}}
+                                                    </span>
+                                                    <span class="d-block ">
+                                                        <form action="{{route('cart.addToWishList',$item->rowId)}}" method="POST">
+                                                            {{csrf_field()}}
+                                                            <button type="submit" class="text-dark border-0 "><i
+                                                                    class="fa fa-shopping-cart"> Move to Cart</i></button>
+                                                        </form>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </th>
+                                        <td class="border-0 align-middle text-center"><strong>£ {{$item->model->price}}</strong>
+                                        </td>
+                                        <td class="border-0 align-middle text-center"><strong>{{$item->qty}}</strong></td>
+                                        <td class="border-0 align-middle text-center">
+                                            <form action="{{route('cart.destroy',$item->rowId)}}" method="POST">
+                                                {{csrf_field()}}
+                                                {{method_field('DELETE')}}
+                                                <button type="submit" class="text-dark border-0 "><i
+                                                        class="fa fa-trash"></i></button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- End -->
                     </div>
                     @endif
                 </div>
