@@ -41,6 +41,6 @@ class WishListController extends Controller
 
         Cart::instance('default')->add($item->id,$item->name, 1 , $item->price)->associate('App\Product');
 
-        return redirect()->route('cart.index')->with('success', 'Item was added to Wishlist');
+        return redirect()->route('cart.index')->with('success', 'Item was added to Cart');
     }
 }

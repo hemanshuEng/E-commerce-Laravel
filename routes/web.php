@@ -28,8 +28,6 @@ Route::post('/cart/addToWishList/{product}', 'CartController@addToWishList')->na
 Route::delete('/WishList/{product}', 'WishListController@destroy')->name('wishlist.destroy');
 Route::post('/WishList/addToCart/{product}', 'WishListController@addToCart')->name('wishlist.addToCart');
 
-Route::get('empty', function () {
-    Cart::instance('addToWishList')->destroy();
-});
+
 
 $value = Config::get('app.timezone');

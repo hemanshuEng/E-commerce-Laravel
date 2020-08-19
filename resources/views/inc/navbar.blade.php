@@ -40,7 +40,7 @@
         </div>
         <div class="cart-menu">
             <a href="{{route('cart.index')}}"><i class="fas fa-cart-arrow-down fa-1x  "> Cart
-                    <span>[{{Cart::count()}}]</span> </i></a>
+                    <span>[{{Cart::instance('default')->count()}}]</span> </i></a>
         </div>
     </nav>
 
