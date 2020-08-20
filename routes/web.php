@@ -29,5 +29,6 @@ Route::delete('/WishList/{product}', 'WishListController@destroy')->name('wishli
 Route::post('/WishList/addToCart/{product}', 'WishListController@addToCart')->name('wishlist.addToCart');
 
 Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
+Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 
 $value = Config::get('app.timezone');

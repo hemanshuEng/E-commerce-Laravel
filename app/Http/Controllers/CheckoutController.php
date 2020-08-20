@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Gloudemans\Shoppingcart\Facades\Cart;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -30,12 +33,26 @@ class CheckoutController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $charge = Stripe::charges()->create([
+                    'amount' => Cart::total(),
+                    'currency' => 'GBP',
+                    'source' => $request->stripeToken,
+                    'description' => 'Order',
+                    'receipt_email' => $request->email,
+                    'metadata' => [
+
+                    ]
+                ]);
+        return back()->with('success', 'Thank You for shopping');
+        } catch (\Exception $e) {
+            return back()->with('success', $e->getMessage());
+        }
     }
 
     /**
@@ -63,7 +80,7 @@ class CheckoutController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
