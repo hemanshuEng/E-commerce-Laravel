@@ -49,7 +49,7 @@ class CheckoutController extends Controller
 
                     ]
                 ]);
-        return back()->with('success', 'Thank You for shopping');
+            return back()->with('success', 'Thank You for shopping');
         } catch (\Exception $e) {
             return back()->with('success', $e->getMessage());
         }

@@ -31,4 +31,5 @@ Route::post('/WishList/addToCart/{product}', 'WishListController@addToCart')->na
 Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
 Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
 
+Route::get('/thankyou', 'ConfirmationController@index')->name('confirmation.index');
 $value = Config::get('app.timezone');
