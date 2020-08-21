@@ -52,3 +52,6 @@ migrate:
 
 seeder:
 	@docker-compose exec php-fpm php artisan seeder
+
+database-dump:
+	@docker-compose exec db mysqldump -uroot -pStrongPassword homestead > backup.sql
