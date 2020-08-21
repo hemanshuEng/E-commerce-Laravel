@@ -1,7 +1,9 @@
 ifeq ($(OS),Windows_NT)
 	CPF := copy
+	CNF := FOR /f "tokens=*" %%i IN ('docker ps -q') DO docker stop %%i
 else
 	CPF := cp
+	CNF := docker stop $$(docker ps -q)
 endif
 
 setup:
@@ -55,3 +57,7 @@ seeder:
 
 database-dump:
 	@docker-compose exec db mysqldump -uroot -pStrongPassword homestead > backup.sql
+
+stop-container:
+	$(CNF)
+
