@@ -163,7 +163,6 @@
             </div>
         </div>
     </div>
-
+    <script src="{{ mix('/js/checkout.js') }}"></script>
 @include('component.brand')
 @endsection
-
