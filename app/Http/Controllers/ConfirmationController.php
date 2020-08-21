@@ -10,10 +10,13 @@ class ConfirmationController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return View
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|View
      */
     public function index()
     {
+        if(! session()->has('success')) {
+            return redirect('/');
+        }
         return view('pages.confirmation');
     }
 }

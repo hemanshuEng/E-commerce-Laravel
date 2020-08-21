@@ -16,7 +16,7 @@
             @if (count($errors)>0)
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     <ul>
-                        @foreach ($error->all() as $error)
+                        @foreach ($errors->all() as $error)
                             <li>{{$error}}</li>
                         @endforeach
                     </ul>
@@ -35,49 +35,49 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="firstname" class="text-uppercase">First Name</label>
-                                    <input type="text" id="firstname" class="form-control" placeholder="Your firstname">
+                                    <input type="text" id="firstname" class="form-control" placeholder="Your firstname" value="{{old('firstname')}}" required >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="lastname" class="text-uppercase">Last Name</label>
-                                <input type="text" id="lastname" class="form-control" placeholder="Your lastname">
+                                <input type="text" id="lastname" class="form-control" placeholder="Your lastname" value="{{old('lastname')}}" required >
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="address" class="text-uppercase">Address</label>
-                                <input type="text" id="address" class="form-control" placeholder="Your address">
+                                <input type="text" id="address" class="form-control" placeholder="Your address" value="{{old('address')}}" required>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="town" class="text-uppercase">Town</label>
-                                <input type="text" id="town" class="form-control" placeholder="Your Town">
+                                <input type="text" id="town" class="form-control" placeholder="Your Town" value="{{old('town')}}" required >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="state" class="text-uppercase">State / Province</label>
-                                <input type="text" id="state" class="form-control" placeholder="State Province">
+                                <input type="text" id="state" class="form-control" placeholder="State Province" value="{{old('state')}}" required >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="postcode" class="text-uppercase">Postal Code</label>
-                                <input type="text" id="postcode" class="form-control" placeholder="Postcode">
+                                <input type="text" id="postcode" class="form-control" placeholder="Postcode" value="{{old('postcode')}}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email" class="text-uppercase">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="Email Address">
+                                <input type="email" id="email" class="form-control" placeholder="Email Address" value="{{old('email')}}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="phone" class="text-uppercase">Phone Number</label>
-                                <input type="tel" id="phone" class="form-control" placeholder="Phone Number">
+                                <input type="tel" id="phone" class="form-control" placeholder="Phone Number" value="{{old('phone')}}" required>
                             </div>
                         </div>
                         <div class="col-md-12">
@@ -96,7 +96,7 @@
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
-                                <button type="submit" class="btn btn-dark rounded-pill py-2 btn-block">Place Order</button>
+                                <button type="submit" id="complete-order" class="btn btn-dark rounded-pill py-2 btn-block">Place Order</button>
                             </div>
                         </div>
                     </div>

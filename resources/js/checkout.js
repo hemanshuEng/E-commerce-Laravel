@@ -45,6 +45,9 @@
     var form = document.getElementById('payment-form');
     form.addEventListener('submit', function(event) {
         event.preventDefault();
+
+        document.getElementById('complete-order').disabled = true;
+
         var options = {
             name: document.getElementById('firstname').value  + " "+ document.getElementById('lastname').value,
             address_line1: document.getElementById('address').value,
@@ -57,6 +60,7 @@
                 // Inform the user if there was an error.
                 var errorElement = document.getElementById('card-errors');
                 errorElement.textContent = result.error.message;
+                document.getElementById('complete-order').disabled = false;
             } else {
                 // Send the token to your server.
                 stripeTokenHandler(result.token);

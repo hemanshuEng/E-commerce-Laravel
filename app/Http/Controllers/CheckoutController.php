@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CheckoutRequest;
+use Cartalyst\Stripe\Exception\CardErrorException;
 use Cartalyst\Stripe\Laravel\Facades\Stripe;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\RedirectResponse;
@@ -36,8 +38,11 @@ class CheckoutController extends Controller
      * @param Request $request
      * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(CheckoutRequest $request)
     {
+        $contents = Cart::content()->map(function ($item){
+            return $item->model->slug . ' , ' . $item->qty;
+        })->values()->toJson();
         try {
             $charge = Stripe::charges()->create([
                     'amount' => Cart::total(),
@@ -46,12 +51,14 @@ class CheckoutController extends Controller
                     'description' => 'Order',
                     'receipt_email' => $request->email,
                     'metadata' => [
-
+                        'content' => $contents,
+                        'quantity' => Cart::instance('default')->count(),
                     ]
                 ]);
-            return back()->with('success', 'Thank You for shopping');
-        } catch (\Exception $e) {
-            return back()->with('success', $e->getMessage());
+            Cart::instance('default')->destroy();
+            return redirect()->route('confirmation.index')->with('success', 'Thank You for shopping');
+        } catch (CardErrorException $e) {
+            return back()->withErrors('error', $e->getMessage());
         }
     }
 
