@@ -36791,7 +36791,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 (function () {
   // Create a Stripe client.
-  var stripe = Stripe("pk_test_51HIDJfD87xwn5urhfgVB0Xon7HpclQhJ7EvXtkAjbINghVOnN4Y9qaTHmLX5M5tAfua9JlFf9Ig3z2W3hISAYfyk00U3RYIqUp"); // Create an instance of Elements.
+  var stripe = Stripe("sk_test_51HIDJfD87xwn5urhWbNYMuSZwIjSdfBpc2eTFCjA3w3GSwChYM2cxt9yAJDX7JyKRfOPX2F1rcSjpUZzsUugjZza00QoIyDVNJ"); // Create an instance of Elements.
 
   var elements = stripe.elements(); // Custom styling can be passed to options when creating an Element.
   // (Note that this demo uses a wider set of styles than the guide below.)
