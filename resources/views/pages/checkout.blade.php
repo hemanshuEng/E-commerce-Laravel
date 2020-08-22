@@ -35,49 +35,49 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="firstname" class="text-uppercase">First Name</label>
-                                    <input type="text" id="firstname" class="form-control" placeholder="Your firstname" value="{{old('firstname')}}" required >
+                                    <input type="text" id="firstname" name="firstname" class="form-control" placeholder="Your firstname" value="{{old('firstname')}}" required >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="lastname" class="text-uppercase">Last Name</label>
-                                <input type="text" id="lastname" class="form-control" placeholder="Your lastname" value="{{old('lastname')}}" required >
+                                <input type="text" id="lastname"  name="lastname"class="form-control" placeholder="Your lastname" value="{{old('lastname')}}" required >
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="address" class="text-uppercase">Address</label>
-                                <input type="text" id="address" class="form-control" placeholder="Your address" value="{{old('address')}}" required>
+                                <input type="text" id="address"  name="address" class="form-control" placeholder="Your address" value="{{old('address')}}" required>
                             </div>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label for="town" class="text-uppercase">Town</label>
-                                <input type="text" id="town" class="form-control" placeholder="Your Town" value="{{old('town')}}" required >
+                                <input type="text" id="town"  name="town" class="form-control" placeholder="Your Town" value="{{old('town')}}" required >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="state" class="text-uppercase">State / Province</label>
-                                <input type="text" id="state" class="form-control" placeholder="State Province" value="{{old('state')}}" required >
+                                <input type="text" id="state"  name="state" class="form-control" placeholder="State Province" value="{{old('state')}}" required >
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="postcode" class="text-uppercase">Postal Code</label>
-                                <input type="text" id="postcode" class="form-control" placeholder="Postcode" value="{{old('postcode')}}" required>
+                                <input type="text" id="postcode"  name="postcode" class="form-control" placeholder="Postcode" value="{{old('postcode')}}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email" class="text-uppercase">Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="Email Address" value="{{old('email')}}" required>
+                                <input type="email" id="email"   name="email" class="form-control" placeholder="Email Address" value="{{old('email')}}" required>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="phone" class="text-uppercase">Phone Number</label>
-                                <input type="tel" id="phone" class="form-control" placeholder="Phone Number" value="{{old('phone')}}" required>
+                                <input type="tel" id="phone"   name="phone" class="form-control" placeholder="Phone Number" value="{{old('phone')}}" required>
                             </div>
                         </div>
                         <div class="col-md-12">
