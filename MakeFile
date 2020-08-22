@@ -9,6 +9,8 @@ endif
 setup:
 	@echo "copying env"
 	@make env
+	@echo "stopping all container"
+	@make stop-container
 	@echo "Start docker Contaier and build"
 	@docker-compose up -d --build
 	@echo "installing Packages"
