@@ -9,13 +9,12 @@ endif
 setup:
 	@echo "copying env"
 	@make env
-	@echo "stopping all container"
-	@make stop-container
 	@echo "Start docker Contaier and build"
 	@docker-compose up -d --build
 	@echo "installing Packages"
 	@make composer-install
 	@echo "installing npm package"
+	@make npm-install
 	@make dev
 	@echo "genererate key"
 	@make key-generate
@@ -23,6 +22,8 @@ setup:
 	@make migrate
 	@echo "seeder"
 	@make seeder
+	@echo "voyager install"
+	@make voyager-install
 
 start:
 	@docker-compose up -d
@@ -45,6 +46,9 @@ prod:
 composer-install:
 	@docker-compose exec php-fpm composer install
 
+npm-install:
+	@docker-compose exec php-fpm npm install
+
 env:
 	$(CPF) .env.example .env
 
@@ -55,11 +59,14 @@ migrate:
 	@docker-compose exec php-fpm php artisan migrate
 
 seeder:
-	@docker-compose exec php-fpm php artisan seeder
+	@docker-compose exec php-fpm php artisan db:seed
 
 database-dump:
 	@docker-compose exec db mysqldump -uroot -pStrongPassword homestead > backup.sql
 
 stop-container:
 	$(CNF)
+
+voyager-install:
+	@docker-compose exec php-fpm php artisan voyager:install
 
