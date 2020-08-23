@@ -1,4 +1,15 @@
 # E-commerce site Using Laravel
+
+Ecommerce site is built using Laravel as backend and Bootstrap is used in front end, application has home, product page, shopping cart and checkout with stripe.
+
+##### List of technologies
+ - Laravel
+ - Custom Bootstrap
+ - jquery
+ - shoppingcart laravel package
+ - stripe payment
+ - admin laravel voyager
+
 ![website](https://github.com/hemanshuEng/E-commerce-Laravel/blob/master/img/webpicture.JPG)
 
 ![gif](https://github.com/hemanshuEng/E-commerce-Laravel/blob/master/img/ezgif-2-d1e0aebebd2f.gif)
