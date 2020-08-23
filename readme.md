@@ -10,6 +10,7 @@
 ````makefile
     git clone https://github.com/hemanshuEng/E-commerce-Laravel.git
 ````
+ - install [gnuwin32](http://gnuwin32.sourceforge.net/packages/make.htm) for run make command in windows
 
 #### setup for first time 
  - start your docker && stop the other containers && run below command
@@ -17,3 +18,12 @@
     make setup
 ````
     
+#### Useful make command 
+ 1. start container 
+ ````makefile
+    make start
+````
+ 2. stop app container
+ ````makefile
+    make stop
+````
