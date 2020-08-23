@@ -41,7 +41,7 @@ dev:
 	@docker-compose exec php-fpm npm run dev
 
 prod:
-	@docker-compose exec php-fpm npm run dev
+	@docker-compose exec php-fpm npm run prod
 
 composer-install:
 	@docker-compose exec php-fpm composer install
