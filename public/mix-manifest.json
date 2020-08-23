@@ -1,5 +1,13 @@
 {
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "/js/app.js": "/js/app.js?id=7fdf70984d1bd0d1c6a8",
     "/css/app.css": "/css/app.css?id=6ce8c71e391e392c33d5",
     "/js/checkout.js": "/js/checkout.js?id=9f751e88883e3b60aab0"
+=======
+=======
+>>>>>>> Stashed changes
+    "/js/app.js": "/js/app.js?id=bbff4ca404b1faf923ff",
+    "/css/app.css": "/css/app.css?id=6ce8c71e391e392c33d5"
+>>>>>>> Stashed changes
 }
