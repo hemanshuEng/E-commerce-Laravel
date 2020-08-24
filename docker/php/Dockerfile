@@ -48,6 +48,6 @@ RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID user
 RUN chown -R user:user /var/www
 USER user
 
-EXPOSE 9000
+EXPOSE 9000 3000 3001
 
 CMD ["php-fpm"]

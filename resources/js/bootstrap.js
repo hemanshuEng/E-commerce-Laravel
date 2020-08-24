@@ -1,5 +1,6 @@
 window._ = require('lodash');
-
+// import '@fortawesome/fontawesome-free/js/all.js';
+// import "@fortawesome/fontawesome-free/css/all.css";
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -10,6 +11,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+
 } catch (e) {}
 
 /**
