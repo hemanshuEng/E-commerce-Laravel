@@ -17,7 +17,8 @@ RUN apt-get update && apt-get install -y \
     wget \
     git \
     unzip \
-    vim
+    vim   \
+    nano
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -48,6 +49,6 @@ RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID user
 RUN chown -R user:user /var/www
 USER user
 
-EXPOSE 9000
+EXPOSE 9000 3000
 
 CMD ["php-fpm"]
